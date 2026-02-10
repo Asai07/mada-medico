@@ -131,11 +131,12 @@ const RoleSection = () => {
                 </div>
 
 
-                {/* --- PARTE 3: CIERRE Y CTA --- */}
-                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10 border-t border-[#374e86]/10 pt-12">
+                {/* --- PARTE 3: CIERRE Y CTA (Centrado en Móvil) --- */}
+                {/* CAMBIO: 'items-center' en el padre para centrar en móvil, 'lg:items-end' para desktop */}
+                <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end gap-12 lg:gap-10 border-t border-[#374e86]/10 pt-12">
 
-                    {/* Puntos Clave Finales */}
-                    <div className="space-y-4">
+                    {/* Puntos Clave Finales (Alineados a la izquierda siempre para lectura) */}
+                    <div className="space-y-4 w-full lg:w-auto">
                         <div className="flex items-start gap-3">
                             <CheckCircle2 size={24} className="text-[#374e86] flex-shrink-0 mt-0.5" fill="#e7f1ad" />
                             <p className="text-[#374e86] font-bold text-lg md:text-xl">
@@ -150,21 +151,23 @@ const RoleSection = () => {
                         </div>
                     </div>
 
-                    {/* Botón CTA */}
-                    <div className="flex flex-col sm:flex-row items-center gap-6">
+                    {/* Botón CTA - CENTRADO EN MÓVIL */}
+                    {/* flex-col (columna) para apilar botón y texto, items-center (centrado) */}
+                    <div className="flex flex-col items-center lg:items-end gap-6 w-full lg:w-auto">
+
                         <motion.button
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="group relative bg-[#374e86] text-white px-8 py-4 rounded-full text-lg font-semibold overflow-hidden shadow-xl shadow-[#374e86]/20"
+                            className="group relative bg-[#374e86] text-white px-8 py-4 rounded-full text-lg font-semibold overflow-hidden shadow-xl shadow-[#374e86]/20 w-full sm:w-auto"
                         >
                             <div className="absolute inset-0 bg-[#e7f1ad] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-                            <span className="relative z-10 flex items-center gap-2 group-hover:text-[#374e86] transition-colors duration-300">
+                            <span className="relative z-10 flex items-center justify-center gap-2 group-hover:text-[#374e86] transition-colors duration-300">
                                 Evaluar mi negocio
                                 <ArrowRight size={20} />
                             </span>
                         </motion.button>
 
-                        <div className="text-center sm:text-left">
+                        <div className="text-center lg:text-right">
                             <p className="text-[#374e86] font-bold text-xs">¿Tu consulta está lista?</p>
                             <p className="text-[#374e86]/60 text-[10px] uppercase tracking-wider">Test de 3 min sin costo</p>
                         </div>
@@ -176,5 +179,4 @@ const RoleSection = () => {
         </section>
     );
 };
-
 export default RoleSection;
