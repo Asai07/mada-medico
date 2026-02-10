@@ -15,6 +15,7 @@ const Hero = () => {
 
             <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
 
+                {/* --- COLUMNA IZQUIERDA (Texto) --- */}
                 <div className="lg:col-span-7 flex flex-col justify-center">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -23,21 +24,18 @@ const Hero = () => {
                     >
                         {/* --- HEADLINE --- */}
                         <div className="mb-6">
-                            {/* Subtítulo */}
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#374e86]/80 font-medium mb-3 tracking-tight">
+                            {/* Intro: Tamaño ajustado */}
+                            <h2 className="text-[1.5rem] sm:text-4xl lg:text-5xl text-[#374e86]/80 font-medium mb-3 tracking-tight whitespace-nowrap">
                                 Cuando tu consulta ya <span className="font-serif italic text-[#4a63a3]">vende,</span>
                             </h2>
 
                             {/* Título Principal */}
-                            {/* Ajustamos los tamaños (text-5xl en movil, sm:text-6xl en tablet, lg:text-[6.2rem] en PC) para que quepan las frases completas */}
                             <h1 className="text-5xl sm:text-6xl lg:text-[5.2rem] leading-[1.1] tracking-tight text-[#374e86] font-bold">
-                                pero tu agenda <br /> {/* Salto forzado siempre */}
-                                se sostiene de <br /> {/* Salto forzado siempre */}
+                                pero tu agenda <br />
+                                se sostiene de <br />
                                 la
                                 <span className="relative inline-block ml-3 md:ml-4">
                                     <span className="font-serif italic font-bold relative z-10">suerte.</span>
-
-                                    {/* Subrayado Completo */}
                                     <motion.span
                                         initial={{ width: 0 }}
                                         animate={{ width: '110%' }}
@@ -48,22 +46,26 @@ const Hero = () => {
                             </h1>
                         </div>
 
-                        {/* --- PÁRRAFO --- */}
+                        {/* --- PÁRRAFO DESTACADO --- */}
+                        {/* CAMBIOS: 
+                            1. font-semibold (más grueso para destacar)
+                            2. mb-6 (menos margen abajo para acercarlo al video en móvil)
+                        */}
                         <motion.p
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.6, duration: 0.8 }}
-                            className="text-lg md:text-xl text-[#374e86] max-w-2xl leading-relaxed mb-10 font-medium"
+                            className="text-lg md:text-xl text-[#374e86] max-w-2xl leading-relaxed mb-6 font-semibold"
                         >
                             Cuando el flujo de tus pacientes depende de recomendaciones, rachas o plataformas médicas que funcionan... hasta que dejan de hacerlo.
                         </motion.p>
 
-                        {/* --- CTA --- */}
+                        {/* --- CTA (VERSIÓN DESKTOP) --- */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.8 }}
-                            className="flex flex-col items-start gap-5"
+                            className="hidden lg:flex flex-col items-start gap-5"
                         >
                             <motion.button
                                 whileHover={{ scale: 1.02 }}
@@ -87,9 +89,12 @@ const Hero = () => {
                     </motion.div>
                 </div>
 
-                {/* --- VIDEO --- */}
-                <div className="lg:col-span-5 relative flex items-center justify-center mt-12 lg:mt-0 pointer-events-none">
-                    <div className="relative w-[320px] h-[320px] lg:w-[450px] lg:h-[450px] flex items-center justify-center">
+                {/* --- COLUMNA DERECHA (VIDEO + CTA MÓVIL) --- */}
+                {/* CAMBIO: mt-2 en lugar de mt-8 para reducir el espacio con el texto superior */}
+                <div className="lg:col-span-5 relative flex flex-col items-center justify-center mt-2 lg:mt-0">
+
+                    {/* VIDEO CONTAINER */}
+                    <div className="relative w-[320px] h-[320px] lg:w-[450px] lg:h-[450px] flex items-center justify-center pointer-events-none">
                         <motion.div
                             animate={{
                                 borderRadius: ["60% 40% 30% 70%/60% 30% 70% 40%", "30% 60% 70% 40%/50% 60% 30% 60%", "60% 40% 30% 70%/60% 30% 70% 40%"],
@@ -113,6 +118,34 @@ const Hero = () => {
                             </motion.div>
                         </motion.div>
                     </div>
+
+                    {/* --- CTA (VERSIÓN MÓVIL) --- */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.8 }}
+                        className="flex lg:hidden flex-col items-center gap-5 mt-8 w-full"
+                    >
+                        <motion.button
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="group relative bg-[#374e86] text-white px-10 py-5 rounded-full text-lg font-semibold overflow-hidden shadow-xl shadow-[#374e86]/20 w-full"
+                        >
+                            <div className="absolute inset-0 bg-[#e7f1ad] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
+                            <span className="relative z-10 flex items-center justify-center gap-2 group-hover:text-[#374e86] transition-colors duration-300">
+                                Evaluar mi negocio
+                                <ArrowRight size={20} />
+                            </span>
+                        </motion.button>
+
+                        <div className="flex items-center gap-2 text-[#374e86]/70">
+                            <span className="text-xl">⏱️</span>
+                            <p className="text-sm font-medium">
+                                Test de 3 minutos para entender tu consulta.
+                            </p>
+                        </div>
+                    </motion.div>
+
                 </div>
             </div>
         </section>
