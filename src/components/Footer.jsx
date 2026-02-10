@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, Copy, Check, Instagram, Linkedin, MessageCircle } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowUpRight, Instagram, Facebook } from 'lucide-react';
 
 const Footer = () => {
-    const [copied, setCopied] = useState(false);
-    const email = "hola@madamkt.com"; // Tu correo real
 
-    const handleCopy = () => {
-        navigator.clipboard.writeText(email);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+    // Función para el botón gigante (Aquí iría el link a tu formulario/Typeform)
+    const handleCTAClick = () => {
+        // Ejemplo: window.open("https://tu-link-al-formulario.com", "_blank");
+        console.log("Navegar al formulario");
     };
 
     const scrollToTop = () => {
@@ -19,7 +17,7 @@ const Footer = () => {
     return (
         <footer className="bg-[#374e86] text-[#fdfdfd] pt-20 pb-8 px-6 md:px-12 relative overflow-hidden rounded-t-[3rem] md:rounded-t-[5rem] -mt-10 z-30 font-sans">
 
-            {/* TEXTURA DE FONDO (Grid sutil igual que SocialProof) */}
+            {/* TEXTURA DE FONDO */}
             <div className="absolute inset-0 pointer-events-none opacity-20"
                 style={{
                     backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
@@ -41,12 +39,11 @@ const Footer = () => {
                         <div className="h-1.5 w-8 bg-[#e7f1ad] mt-1 group-hover:w-full transition-all duration-500 ease-out rounded-full"></div>
                     </div>
 
-                    {/* Redes Sociales */}
+                    {/* Redes Sociales (Solo IG y FB) */}
                     <div className="flex gap-6 md:gap-8">
                         {[
                             { name: 'Instagram', icon: Instagram, url: '#' },
-                            { name: 'LinkedIn', icon: Linkedin, url: '#' },
-                            { name: 'WhatsApp', icon: MessageCircle, url: '#' }
+                            { name: 'Facebook', icon: Facebook, url: '#' }
                         ].map((social, i) => (
                             <a
                                 key={i}
@@ -61,11 +58,11 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* --- 2. MIDDLE SECTION (Interactive Email CTA) --- */}
-                {/* Esta es la adaptación del código que te gustó */}
+                {/* --- 2. MIDDLE SECTION (Massive CTA Button) --- */}
+                {/* Mismo diseño que les gustó, pero ahora es un botón de acción */}
                 <div className="mb-20">
                     <motion.div
-                        onClick={handleCopy}
+                        onClick={handleCTAClick}
                         whileHover="hover"
                         whileTap={{ scale: 0.99 }}
                         initial="initial"
@@ -83,39 +80,23 @@ const Footer = () => {
 
                         <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-6 px-4">
 
-                            {/* Texto */}
+                            {/* Texto CTA */}
                             <div className="flex flex-col items-center md:items-start transition-colors duration-300 group-hover:text-[#374e86]">
                                 <span className="font-mono text-xs font-bold uppercase tracking-widest mb-2 opacity-60 group-hover:opacity-100">
-                                    ¿Tienes un proyecto?
+                                    ¿Listo para escalar?
                                 </span>
-                                <h2 className="font-serif italic text-4xl md:text-6xl lg:text-7xl text-center md:text-left">
-                                    {email}
+                                <h2 className="font-serif italic text-4xl md:text-6xl lg:text-7xl text-center md:text-left leading-tight">
+                                    Evaluar mi negocio
                                 </h2>
                             </div>
 
-                            {/* Icono de Acción (Copiar / Check) */}
-                            <div className="w-16 h-16 rounded-full border border-[#fdfdfd]/30 group-hover:border-[#374e86]/30 flex items-center justify-center transition-colors">
-                                <AnimatePresence mode='wait'>
-                                    {copied ? (
-                                        <motion.div
-                                            key="check"
-                                            initial={{ scale: 0 }}
-                                            animate={{ scale: 1 }}
-                                            exit={{ scale: 0 }}
-                                        >
-                                            <Check size={28} className="text-[#374e86]" strokeWidth={3} />
-                                        </motion.div>
-                                    ) : (
-                                        <motion.div
-                                            key="copy"
-                                            initial={{ scale: 0 }}
-                                            animate={{ scale: 1 }}
-                                            exit={{ scale: 0 }}
-                                        >
-                                            <Copy size={24} className="text-[#fdfdfd] group-hover:text-[#374e86] transition-colors" />
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
+                            {/* Icono de Acción (Flecha) */}
+                            <div className="w-20 h-20 rounded-full border border-[#fdfdfd]/30 group-hover:border-[#374e86]/30 flex items-center justify-center transition-colors">
+                                <ArrowUpRight
+                                    size={32}
+                                    strokeWidth={1.5}
+                                    className="text-[#fdfdfd] group-hover:text-[#374e86] group-hover:rotate-45 transition-all duration-300"
+                                />
                             </div>
 
                         </div>

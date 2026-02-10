@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
-import { useLenis } from './SmoothScroll'; // <--- IMPORTANTE: Importa el hook desde tu archivo
+import { useLenis } from './SmoothScroll';
 
 const Navbar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,51 +21,46 @@ const Navbar = () => {
         e.preventDefault();
         setMobileMenuOpen(false);
 
-        // Si Lenis está listo, usamos su método scrollTo
         if (lenis) {
             lenis.scrollTo(`#${id}`, {
-                offset: -100, // Compensación para que el header no tape el título
-                duration: 1.5, // Duración suave
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Misma curva de suavidad
+                offset: -50,
+                duration: 1.5,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             });
         } else {
-            // Fallback por si acaso (scroll nativo)
             const element = document.getElementById(id);
             if (element) {
-                const y = element.getBoundingClientRect().top + window.pageYOffset - 100;
+                const y = element.getBoundingClientRect().top + window.pageYOffset - 50;
                 window.scrollTo({ top: y, behavior: 'smooth' });
             }
         }
     };
 
-    // ... El resto de tu JSX se mantiene igual ...
     return (
-        // ...
-        // Asegúrate de usar la función en los links:
-        // <a href={`#${link.id}`} onClick={(e) => scrollToSection(e, link.id)} ... >
-        // ...
-        // Y en el botón de contacto:
-        // <button onClick={(e) => scrollToSection(e, 'contacto')} ... >
-        // ...
         <>
+            {/* CAMBIOS APLICADOS:
+               1. 'absolute': Se queda arriba y no baja con el scroll.
+               2. 'top-0': Pegado al borde superior (sin margen top-6).
+               3. Sin caja blanca: Se eliminaron las clases de background, shadow y border.
+               4. 'max-w-7xl': Para alinearse con el contenido del Hero.
+            */}
             <motion.nav
-                initial={{ y: -100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, ease: "easeOut" }} // Animación suave solo de aparición (sin movimiento Y)
+                className="absolute top-0 left-0 right-0 z-50 flex justify-center w-full"
             >
-                {/* ... Contenido del Navbar ... */}
-                <div className="bg-white rounded-2xl shadow-xl shadow-[#374e86]/5 w-full max-w-6xl px-6 py-4 border border-gray-100 flex items-center">
+                <div className="w-full max-w-7xl px-6 md:px-12 py-8 flex items-center justify-between">
 
                     {/* Logo */}
                     <div className="flex-1 flex justify-start">
                         <a
                             href="#"
                             onClick={(e) => {
-                                e.preventDefault(); // Evita que recargue la página o ponga el # en la URL
+                                e.preventDefault();
                                 lenis ? lenis.scrollTo(0) : window.scrollTo({ top: 0, behavior: 'smooth' });
                             }}
-                            className="flex items-center gap-1 z-50 cursor-pointer"
+                            className="flex items-center gap-1 cursor-pointer"
                         >
                             <span className="text-xl font-bold tracking-tighter text-[#374e86]">
                                 MADA
@@ -74,17 +69,18 @@ const Navbar = () => {
                         </a>
                     </div>
 
-                    {/* Menú Central */}
-                    <div className="hidden md:flex items-center gap-8">
+                    {/* Menú Central (Minimalista) */}
+                    <div className="hidden md:flex items-center gap-10">
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
                                 href={`#${link.id}`}
                                 onClick={(e) => scrollToSection(e, link.id)}
-                                className="text-sm font-medium text-[#374e86] hover:text-[#95b2ed] transition-colors relative group"
+                                className="text-sm font-medium text-[#374e86]/80 hover:text-[#374e86] transition-colors relative group"
                             >
                                 {link.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#e7f1ad] transition-all duration-300 group-hover:w-full"></span>
+                                {/* Pequeño punto verde al hacer hover en lugar de la línea completa, más discreto */}
+                                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#e7f1ad] opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
                             </a>
                         ))}
                     </div>
@@ -96,7 +92,7 @@ const Navbar = () => {
                                 onClick={(e) => scrollToSection(e, 'contacto')}
                                 className="group flex items-center gap-3 cursor-pointer"
                             >
-                                <span className="text-sm font-semibold text-[#374e86] group-hover:text-[#95b2ed] transition-colors">
+                                <span className="text-sm font-bold text-[#374e86] group-hover:opacity-70 transition-opacity">
                                     Hablemos
                                 </span>
                                 <div className="w-10 h-10 rounded-full bg-[#e7f1ad] flex items-center justify-center text-[#374e86] transition-transform duration-300 group-hover:scale-110 group-hover:rotate-45 shadow-sm">
@@ -104,25 +100,27 @@ const Navbar = () => {
                                 </div>
                             </button>
                         </div>
+
                         {/* Hamburguesa Móvil */}
                         <button
-                            className="md:hidden p-2 text-[#374e86] bg-gray-50 rounded-full hover:bg-gray-100 transition-colors"
+                            className="md:hidden p-2 text-[#374e86] hover:bg-[#374e86]/5 rounded-full transition-colors"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                         >
-                            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
                     </div>
 
                 </div>
             </motion.nav>
-            {/* ... Mobile Menu Overlay ... */}
+
+            {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {mobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="fixed inset-0 bg-[#fdfdfd] z-40 flex flex-col justify-center items-center gap-8 md:hidden"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 bg-[#fdfdfd]/95 backdrop-blur-md z-40 flex flex-col justify-center items-center gap-8 md:hidden"
                     >
                         {navLinks.map((link) => (
                             <a
@@ -136,7 +134,7 @@ const Navbar = () => {
                         ))}
                         <button
                             onClick={(e) => scrollToSection(e, 'contacto')}
-                            className="mt-4 bg-[#e7f1ad] text-[#374e86] px-8 py-3 rounded-full text-lg font-bold flex items-center gap-2"
+                            className="mt-8 bg-[#e7f1ad] text-[#374e86] px-8 py-3 rounded-full text-lg font-bold flex items-center gap-2 shadow-lg shadow-[#e7f1ad]/20"
                         >
                             Hablemos <ArrowUpRight size={20} />
                         </button>
