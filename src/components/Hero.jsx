@@ -2,9 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play } from 'lucide-react';
 
+
 const Hero = () => {
     return (
-        <section className="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden bg-gradient-to-br from-[#fdfcff] via-[#fbfaff] to-[#f4f0ff] font-sans">
+        // Aplicamos la fuente base 'Wix Madefor Display' a la sección
+        <section className="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden bg-gradient-to-br from-[#fdfcff] via-[#fbfaff] to-[#f4f0ff] font-['Wix_Madefor_Display']">
 
             {/* --- Background Elements --- */}
             <div className="absolute inset-0 z-0 pointer-events-none">
@@ -13,7 +15,6 @@ const Hero = () => {
                 <div className="absolute top-[40%] -left-[10%] w-[400px] h-[400px] bg-[#e7f1ad]/10 rounded-full blur-3xl"></div>
             </div>
 
-            {/* AJUSTE CLAVE 1: 'gap-2' en móvil (muy pegado) vs 'lg:gap-12' en PC (espacioso) */}
             <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-2 lg:gap-12 items-center relative z-10">
 
                 {/* --- COLUMNA IZQUIERDA (Texto) --- */}
@@ -24,17 +25,19 @@ const Hero = () => {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
                         {/* --- HEADLINE --- */}
-                        {/* Restaurado mb-6 en desktop */}
-                        <div className="mb-2 md:mb-6">
-                            <h2 className="text-[1.5rem] sm:text-4xl lg:text-5xl text-[#374e86]/80 font-medium mb-2 tracking-tight whitespace-nowrap">
-                                Cuando tu consulta ya <span className="font-serif italic text-[#4a63a3]">vende,</span>
+                        {/* CAMBIO ESPACIADO: mb-4 en móvil (antes mb-2) para dar esos ~5-8px extra de separación con el párrafo */}
+                        <div className="mb-4 md:mb-6">
+
+                            <h2 className="text-[1.3rem] xs:text-[1.5rem] sm:text-4xl lg:text-5xl text-[#374e86]/80 font-medium mb-2 tracking-tight whitespace-nowrap">
+                                Cuando tu consulta ya <span className="font-serif italic text-[#4a63a3]">vende,</span> pero
                             </h2>
 
                             <h1 className="text-5xl sm:text-6xl lg:text-[5.2rem] leading-[1.1] tracking-tight text-[#374e86] font-bold">
-                                pero tu agenda <br />
+                                tu agenda <br />
                                 se sostiene de <br />
                                 la
                                 <span className="relative inline-block ml-3 md:ml-4">
+                                    {/* Mantenemos font-serif italic aquí como pidió el cliente */}
                                     <span className="font-serif italic font-bold relative z-10">suerte.</span>
                                     <motion.span
                                         initial={{ width: 0 }}
@@ -47,16 +50,12 @@ const Hero = () => {
                         </div>
 
                         {/* --- PÁRRAFO --- */}
-                        {/* AJUSTE CLAVE 2: 
-                           - 'mb-2' en móvil (mínimo espacio)
-                           - 'md:mb-10' en desktop (restaurado espacio original)
-                           - Mantenemos la franja verde (border-l-4)
-                        */}
+                        {/* CAMBIO FUENTE: Usamos 'Wix Madefor Text' para mejor legibilidad en bloques de texto */}
                         <motion.p
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.6, duration: 0.8 }}
-                            className="text-lg md:text-xl text-[#374e86] max-w-2xl leading-relaxed mb-2 md:mb-10 font-semibold border-l-4 border-[#e7f1ad] pl-4"
+                            className="text-lg md:text-xl text-[#374e86] max-w-2xl leading-relaxed mb-6 md:mb-10 font-semibold border-l-4 border-[#e7f1ad] pl-4 font-['Wix_Madefor_Text']"
                         >
                             Cuando el flujo de tus pacientes depende de recomendaciones, rachas o plataformas médicas que funcionan... hasta que dejan de hacerlo.
                         </motion.p>
@@ -71,7 +70,7 @@ const Hero = () => {
                             <motion.button
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
-                                className="group relative bg-[#374e86] text-white px-10 py-5 rounded-full text-lg font-semibold overflow-hidden shadow-xl shadow-[#374e86]/20 w-full sm:w-auto"
+                                className="group relative bg-[#374e86] text-white px-10 py-5 rounded-full text-lg font-semibold overflow-hidden shadow-xl shadow-[#374e86]/20 w-full sm:w-auto font-['Wix_Madefor_Display']"
                             >
                                 <div className="absolute inset-0 bg-[#e7f1ad] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
                                 <span className="relative z-10 flex items-center justify-center gap-2 group-hover:text-[#374e86] transition-colors duration-300">
@@ -80,7 +79,7 @@ const Hero = () => {
                                 </span>
                             </motion.button>
 
-                            <div className="flex items-center gap-2 text-[#374e86]/70 pl-2">
+                            <div className="flex items-center gap-2 text-[#374e86]/70 pl-2 font-['Wix_Madefor_Text']">
                                 <span className="text-xl">⏱️</span>
                                 <p className="text-sm font-medium">
                                     Test de 3 minutos para entender tu consulta.
@@ -91,8 +90,7 @@ const Hero = () => {
                 </div>
 
                 {/* --- COLUMNA DERECHA (VIDEO + CTA MÓVIL) --- */}
-                {/* AJUSTE CLAVE 3: '-mt-6' en móvil para "subir" el video y pegarlo al texto */}
-                <div className="lg:col-span-5 relative flex flex-col items-center justify-center -mt-6 lg:mt-0">
+                <div className="lg:col-span-5 relative flex flex-col items-center justify-center -mt-2 lg:mt-0">
 
                     {/* VIDEO CONTAINER */}
                     <div className="relative w-[320px] h-[320px] lg:w-[450px] lg:h-[450px] flex items-center justify-center pointer-events-none scale-90 md:scale-100">
@@ -130,7 +128,7 @@ const Hero = () => {
                         <motion.button
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="group relative bg-[#374e86] text-white px-10 py-5 rounded-full text-lg font-semibold overflow-hidden shadow-xl shadow-[#374e86]/20 w-full"
+                            className="group relative bg-[#374e86] text-white px-10 py-5 rounded-full text-lg font-semibold overflow-hidden shadow-xl shadow-[#374e86]/20 w-full font-['Wix_Madefor_Display']"
                         >
                             <div className="absolute inset-0 bg-[#e7f1ad] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
                             <span className="relative z-10 flex items-center justify-center gap-2 group-hover:text-[#374e86] transition-colors duration-300">
@@ -139,7 +137,7 @@ const Hero = () => {
                             </span>
                         </motion.button>
 
-                        <div className="flex items-center gap-2 text-[#374e86]/70">
+                        <div className="flex items-center gap-2 text-[#374e86]/70 font-['Wix_Madefor_Text']">
                             <span className="text-xl">⏱️</span>
                             <p className="text-sm font-medium">
                                 Test de 3 minutos para entender tu consulta.

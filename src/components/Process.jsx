@@ -6,36 +6,40 @@ const steps = [
     {
         id: "01",
         icon: Search,
-        title: "Diagnóstico",
+        // CAMBIO: Título y Descripción actualizados
+        title: "Consulta de valoración",
         subtitle: "Auditoría Profunda",
-        desc: "Analizamos la salud digital de tu clínica. Identificamos síntomas y causas raíz antes de proponer nada.",
+        desc: "Analizamos la salud digital de tu consulta: Cómo llega hoy el paciente, qué decisiones estás tomando y qué está influyendo realmente en tu agenda. Nada se define sin esta etapa.",
         color: "group-hover:text-[#374e86]",
         bg: "group-hover:bg-[#374e86]/5"
     },
     {
         id: "02",
         icon: FileText,
-        title: "Receta",
+        // CAMBIO: Título y Descripción actualizados
+        title: "Tratamiento",
         subtitle: "Estrategia a Medida",
-        desc: "Diseñamos un plan único: canales, tono de voz y presupuesto exacto para tus objetivos.",
+        desc: "Con base en la valoración, diseñamos un protocolo a tu medida: estrategia, canales, mensajes y presupuesto alineados a tus objetivos reales, no a fórmulas genéricas ni acciones aisladas.",
         color: "group-hover:text-[#95b2ed]",
         bg: "group-hover:bg-[#95b2ed]/10"
     },
     {
         id: "03",
         icon: Zap,
-        title: "Cirugía",
+        // CAMBIO: Título y Descripción actualizados
+        title: "Aplicación",
         subtitle: "Ejecución Visual",
-        desc: "Implementamos la nueva identidad. Web y campañas con estética impecable que transmite seguridad.",
+        desc: "Implementamos el tratamiento con criterio: campañas y contenido alineados para transmitir confianza y atraer al paciente correcto, no solo más volumen.",
         color: "group-hover:text-[#bcb5ff]",
         bg: "group-hover:bg-[#bcb5ff]/10"
     },
     {
         id: "04",
         icon: BarChart3,
-        title: "Control",
+        // CAMBIO: Título y Descripción actualizados
+        title: "Seguimiento",
         subtitle: "Optimización ROAS",
-        desc: "Monitoreamos resultados semanalmente y ajustamos la dosis de inversión para maximizar el retorno.",
+        desc: "Acompañamos el proceso, medimos lo que importa y ajustamos decisiones para que el crecimiento sea sostenible y tu agenda deje de depender de rachas.",
         color: "group-hover:text-[#e7f1ad]",
         bg: "group-hover:bg-[#e7f1ad]/20"
     }
@@ -68,7 +72,8 @@ const ProcessCard = ({ step, index }) => {
                 <span className="text-xs font-mono uppercase tracking-widest text-[#374e86]/50 mb-3 block">
                     {step.subtitle}
                 </span>
-                <p className="text-[#374e86]/70 font-light leading-relaxed text-sm">
+                {/* Fuente de lectura 'Wix Madefor Text' */}
+                <p className="text-[#374e86]/70 font-light leading-relaxed text-sm font-['Wix_Madefor_Text']">
                     {step.desc}
                 </p>
             </div>
@@ -81,8 +86,8 @@ const ProcessCard = ({ step, index }) => {
 
 const Process = () => {
     return (
-        // Margen negativo y bordes redondeados para superponerse a la sección azul anterior
-        <section id="proceso" className="bg-[#fdfdfd] py-24 px-6 md:px-12 relative z-30 rounded-t-[3rem] md:rounded-t-[5rem] -mt-12 shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
+        // Fuente base 'Wix Madefor Display'
+        <section id="proceso" className="bg-[#fdfdfd] py-24 px-6 md:px-12 relative z-30 rounded-t-[3rem] md:rounded-t-[5rem] -mt-12 shadow-[0_-20px_40px_rgba(0,0,0,0.1)] font-['Wix_Madefor_Display']">
             <div className="max-w-7xl mx-auto">
 
                 {/* Section Header */}
@@ -100,8 +105,10 @@ const Process = () => {
                     <h2 className="text-4xl md:text-6xl font-bold text-[#374e86] tracking-tight mb-6">
                         Proceso <span className="font-serif italic font-normal text-[#95b2ed]">Clínico.</span>
                     </h2>
-                    <p className="text-[#374e86]/70 text-lg font-light leading-relaxed max-w-2xl mx-auto">
-                        Eliminamos la improvisación. Aplicamos un protocolo estandarizado de 4 fases para garantizar la salud comercial de tu marca.
+
+                    {/* CAMBIO: Texto descriptivo actualizado */}
+                    <p className="text-[#374e86]/70 text-lg font-light leading-relaxed max-w-2xl mx-auto font-['Wix_Madefor_Text']">
+                        Eliminamos la improvisación. Trabajamos con un protocolo claro de 4 fases para <strong>fortalecer</strong> la salud comercial de tu marca.
                     </p>
                 </div>
 
@@ -112,26 +119,22 @@ const Process = () => {
                     ))}
                 </div>
 
-                {/* Bottom CTA (Actualizado al estilo consistente) */}
+                {/* Bottom CTA */}
                 <div className="mt-16 text-center flex flex-col items-center">
                     <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         className="group relative bg-[#374e86] text-white px-10 py-5 rounded-full text-lg font-bold overflow-hidden shadow-xl shadow-[#374e86]/20"
                     >
-                        {/* Fondo animado (Verde) */}
                         <div className="absolute inset-0 bg-[#e7f1ad] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-
-                        {/* Contenido */}
                         <span className="relative z-10 flex items-center justify-center gap-3 group-hover:text-[#374e86] transition-colors duration-300">
                             Evaluar mi negocio
                             <ArrowRight size={20} />
                         </span>
                     </motion.button>
 
-                    {/* Microcopy debajo - CORREGIDO: Centrado y sin rotación */}
                     <div className="mt-4 bg-[#e7f1ad]/40 px-4 py-1 rounded-md">
-                        <p className="text-xs md:text-sm font-bold text-[#374e86]">
+                        <p className="text-xs md:text-sm font-bold text-[#374e86] font-['Wix_Madefor_Text']">
                             ⏱️ Test de 3 minutos para entender tu consulta.
                         </p>
                     </div>

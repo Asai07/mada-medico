@@ -4,7 +4,7 @@ import { Check, X, ArrowRight, UserCheck, UserX } from 'lucide-react';
 
 const TargetAudience = () => {
     return (
-        <section className="py-24 md:py-32 px-6 md:px-12 bg-[#fdfdfd] relative z-10 font-sans overflow-hidden">
+        <section className="py-24 md:py-32 px-6 md:px-12 bg-[#fdfdfd] relative z-10 font-['Wix_Madefor_Display'] overflow-hidden">
 
             {/* Background Texture */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
@@ -20,11 +20,10 @@ const TargetAudience = () => {
                         className="inline-block bg-[#e7f1ad] px-6 py-2 rounded-full transform -rotate-1 mb-6 shadow-sm"
                     >
                         <span className="font-mono text-[#374e86] text-xs md:text-sm tracking-widest uppercase font-bold">
-                            Sección #4 — ¿Somos para ti?
+                            ¿Somos para ti?
                         </span>
                     </motion.div>
 
-                    {/* Ajuste de salto de línea para evitar que "con" quede sola */}
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#374e86] tracking-tight leading-[1.1]">
                         Este enfoque es para médicos <br className="hidden md:block" />
                         que quieren crecer su agenda <br className="hidden md:block" />
@@ -32,14 +31,14 @@ const TargetAudience = () => {
                     </h2>
                 </div>
 
-                {/* --- CONTENEDOR PRINCIPAL (Línea Punteada Recta) --- */}
-                {/* Usamos border-dashed de CSS en lugar del SVG para que sea recto y limpio */}
+                {/* --- CONTENEDOR PRINCIPAL --- */}
                 <div className="relative w-full max-w-6xl mx-auto p-2 md:p-4 border-2 border-dashed border-[#374e86]/20 rounded-[2.5rem]">
 
                     <div className="flex flex-col lg:flex-row gap-6 lg:gap-0 bg-white rounded-[2rem] overflow-hidden shadow-sm">
 
-                        {/* --- TARJETA IZQUIERDA: ES PARA TI (VERDE) --- */}
-                        <div className="flex-1 bg-[#fdfdfd] border-b-2 lg:border-b-0 lg:border-r-2 border-[#e7f1ad]/30 p-8 md:p-12 relative overflow-hidden group">
+                        {/* --- TARJETA IZQUIERDA: ES PARA TI (VERDE TENUE) --- */}
+                        {/* Fondo: Verde muy pálido */}
+                        <div className="flex-1 bg-[#fafdeb] border-b-2 lg:border-b-0 lg:border-r-2 border-[#e7f1ad]/30 p-8 md:p-12 relative overflow-hidden group">
 
                             {/* Decoración Fondo */}
                             <div className="absolute top-0 right-0 w-64 h-64 bg-[#e7f1ad]/10 rounded-full blur-3xl"></div>
@@ -67,11 +66,12 @@ const TargetAudience = () => {
                                                 <div className="mt-1 flex-shrink-0 text-[#374e86]">
                                                     <Check size={20} strokeWidth={3} />
                                                 </div>
-                                                <span>
+                                                <span className="font-['Wix_Madefor_Text']">
                                                     {item.text.split(item.bold).map((part, i, arr) => (
                                                         <React.Fragment key={i}>
                                                             {part}
-                                                            {i < arr.length - 1 && <strong className="font-bold text-[#374e86] bg-[#e7f1ad]/30 px-1 rounded">{item.bold}</strong>}
+                                                            {/* CAMBIO: Highlight Verde Lima Sólido (bg-[#e7f1ad]) para mayor contraste */}
+                                                            {i < arr.length - 1 && <strong className="font-bold text-[#374e86] bg-[#e7f1ad] px-1 rounded">{item.bold}</strong>}
                                                         </React.Fragment>
                                                     ))}
                                                 </span>
@@ -80,7 +80,7 @@ const TargetAudience = () => {
                                     </ul>
                                 </div>
 
-                                {/* BOTÓN FIJO (Siempre visible ahora) */}
+                                {/* BOTÓN FIJO */}
                                 <div className="mt-10 pt-6 border-t border-[#374e86]/10">
                                     <button className="text-sm font-bold text-[#374e86] uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all duration-300 group-hover:text-[#4a63a3]">
                                         ¡Hagamos Match! <ArrowRight size={16} />
@@ -91,7 +91,6 @@ const TargetAudience = () => {
 
 
                         {/* --- TARJETA DERECHA: NO ES PARA TI (ROJO SUAVE) --- */}
-                        {/* Se eliminó la opacidad y el fondo rayado fuerte para mejorar legibilidad */}
                         <div className="flex-1 bg-[#fff5f5]/50 p-8 md:p-12 relative overflow-hidden">
 
                             {/* Decoración Fondo Rojo Sutil */}
@@ -112,7 +111,7 @@ const TargetAudience = () => {
                                         "Buscas viralidad o likes sin impacto real en ventas.",
                                         "Solo quieres 'manejo de redes sociales' básico.",
                                         "Esperas resultados inmediatos sin respetar un proceso.",
-                                        "Quieres delegar todo sin involucrarte mínimamente.",
+                                        "Esperas delegar todo sin involucrarte en las decisiones clave.",
                                         "Buscas fórmulas genéricas o replicar a otros.",
                                         "Comparas agencias únicamente por precio."
                                     ].map((text, idx) => (
@@ -120,7 +119,7 @@ const TargetAudience = () => {
                                             <div className="mt-1 flex-shrink-0 text-red-400">
                                                 <X size={20} strokeWidth={3} />
                                             </div>
-                                            <span>{text}</span>
+                                            <span className="font-['Wix_Madefor_Text']">{text}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -138,7 +137,6 @@ const TargetAudience = () => {
                         transition={{ delay: 0.2 }}
                         className="inline-flex flex-col items-center"
                     >
-                        {/* Flecha Garabato */}
                         <svg className="w-12 h-12 text-[#e7f1ad] mb-4 transform -rotate-12" viewBox="0 0 100 100">
                             <path d="M50,10 Q80,40 50,90" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
                             <path d="M40,70 L50,90 L70,80" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
