@@ -2,14 +2,15 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Calendar, BrainCircuit, Target, Repeat } from 'lucide-react';
 
-// Datos de las tarjetas
+// Datos de las tarjetas con AJUSTE DE COLOR RESPONSIVO
 const problemCards = [
     {
         id: 1,
         icon: Calendar,
         text: "Semanas con agenda llena...",
         highlight: "y otras inesperadamente tranquilas.",
-        bg: "bg-[#e0e7ff]", // Lavanda
+        // Siempre Morado (Lavanda)
+        bg: "bg-[#e0e7ff]",
         delay: 0
     },
     {
@@ -17,7 +18,8 @@ const problemCards = [
         icon: Repeat,
         text: "Sensación constante de estar 'intentando cosas'",
         highlight: "y no ver resultados sostenibles.",
-        bg: "bg-[#e7f1ad]", // Lima
+        // Siempre Verde (Lima)
+        bg: "bg-[#e7f1ad]",
         delay: 0.1
     },
     {
@@ -25,7 +27,8 @@ const problemCards = [
         icon: Target,
         text: "Anuncios, contenido o plataformas",
         highlight: "sin saber qué sí funciona.",
-        bg: "bg-[#e7f1ad]", // Lima
+        // CAMBIO AQUÍ: Morado en Móvil -> Verde en PC
+        bg: "bg-[#e0e7ff] md:bg-[#e7f1ad]",
         delay: 0.2
     },
     {
@@ -33,7 +36,8 @@ const problemCards = [
         icon: BrainCircuit,
         text: "Decisiones tomadas por",
         highlight: "intuición.",
-        bg: "bg-[#e0e7ff]", // Lavanda
+        // CAMBIO AQUÍ: Verde en Móvil -> Morado en PC
+        bg: "bg-[#e7f1ad] md:bg-[#e0e7ff]",
         delay: 0.3
     }
 ];
@@ -45,6 +49,7 @@ const ProblemCard = ({ item }) => (
         viewport={{ once: true }}
         transition={{ delay: item.delay, duration: 0.5 }}
         whileHover={{ y: -5 }}
+        // Las clases responsivas se aplican aquí automáticamente
         className={`${item.bg} p-6 md:p-8 rounded-3xl flex flex-col gap-4 text-[#374e86] shadow-lg shadow-black/5 h-full min-h-[200px] justify-center`}
     >
         <div className="w-10 h-10 rounded-full bg-[#374e86]/10 flex items-center justify-center mb-1">
@@ -69,7 +74,7 @@ const Manifesto = () => {
     return (
         <section id="manifiesto" ref={containerRef} className="bg-[#374e86] text-[#fdfdfd] py-24 md:py-32 px-6 md:px-12 relative overflow-hidden rounded-t-[3rem] md:rounded-t-[5rem] -mt-10 z-20 font-sans">
 
-            {/* Background Texture (Cuadrícula tenue restaurada) */}
+            {/* Background Texture */}
             <div className="absolute inset-0 opacity-5 pointer-events-none"
                 style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
             </div>
@@ -113,13 +118,13 @@ const Manifesto = () => {
 
                 </div>
 
-                {/* --- SECCIÓN INFERIOR: BANNER CTA RESTAURADO (Estilo image_a2d820.png) --- */}
+                {/* --- SECCIÓN INFERIOR: BANNER CTA --- */}
                 <div className="bg-[#2a3c69] rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-2xl shadow-black/20">
 
-                    {/* Decoración de fondo del banner */}
+                    {/* Decoración de fondo */}
                     <div className="absolute top-0 right-0 w-64 h-64 bg-[#e7f1ad]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
 
-                    {/* Líneas decorativas naranjas (estilo sketch) del banner original */}
+                    {/* Líneas decorativas */}
                     <svg className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none opacity-40 text-[#ff6b6b]" viewBox="0 0 800 200">
                         <path d="M600,0 Q650,100 800,50" fill="none" stroke="currentColor" strokeWidth="2" />
                     </svg>
