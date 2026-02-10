@@ -4,7 +4,7 @@ import { ArrowRight, Play } from 'lucide-react';
 
 const Hero = () => {
     return (
-        <section className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden bg-gradient-to-br from-[#fdfcff] via-[#fbfaff] to-[#f4f0ff] font-sans">
+        <section className="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden bg-gradient-to-br from-[#fdfcff] via-[#fbfaff] to-[#f4f0ff] font-sans">
 
             {/* --- Background Elements --- */}
             <div className="absolute inset-0 z-0 pointer-events-none">
@@ -13,7 +13,7 @@ const Hero = () => {
                 <div className="absolute top-[40%] -left-[10%] w-[400px] h-[400px] bg-[#e7f1ad]/10 rounded-full blur-3xl"></div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
 
                 {/* --- COLUMNA IZQUIERDA (Texto) --- */}
                 <div className="lg:col-span-7 flex flex-col justify-center">
@@ -23,9 +23,9 @@ const Hero = () => {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
                         {/* --- HEADLINE --- */}
-                        <div className="mb-6">
-                            {/* Intro: Tamaño ajustado */}
-                            <h2 className="text-[1.5rem] sm:text-4xl lg:text-5xl text-[#374e86]/80 font-medium mb-3 tracking-tight whitespace-nowrap">
+                        <div className="mb-2 md:mb-6">
+                            {/* Intro */}
+                            <h2 className="text-[1.5rem] sm:text-4xl lg:text-5xl text-[#374e86]/80 font-medium mb-2 tracking-tight whitespace-nowrap">
                                 Cuando tu consulta ya <span className="font-serif italic text-[#4a63a3]">vende,</span>
                             </h2>
 
@@ -46,16 +46,16 @@ const Hero = () => {
                             </h1>
                         </div>
 
-                        {/* --- PÁRRAFO DESTACADO --- */}
-                        {/* CAMBIOS: 
-                            1. font-semibold (más grueso para destacar)
-                            2. mb-6 (menos margen abajo para acercarlo al video en móvil)
+                        {/* --- PÁRRAFO DESTACADO CON FRANJA --- */}
+                        {/* - border-l-4 border-[#e7f1ad]: La franja verde lateral.
+                           - pl-4: Espacio interno para separar el texto de la franja.
+                           - mb-4: Margen reducido para acercar el video.
                         */}
                         <motion.p
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.6, duration: 0.8 }}
-                            className="text-lg md:text-xl text-[#374e86] max-w-2xl leading-relaxed mb-6 font-semibold"
+                            className="text-lg md:text-xl text-[#374e86] max-w-2xl leading-relaxed mb-4 font-semibold border-l-4 border-[#e7f1ad] pl-4"
                         >
                             Cuando el flujo de tus pacientes depende de recomendaciones, rachas o plataformas médicas que funcionan... hasta que dejan de hacerlo.
                         </motion.p>
@@ -90,11 +90,11 @@ const Hero = () => {
                 </div>
 
                 {/* --- COLUMNA DERECHA (VIDEO + CTA MÓVIL) --- */}
-                {/* CAMBIO: mt-2 en lugar de mt-8 para reducir el espacio con el texto superior */}
-                <div className="lg:col-span-5 relative flex flex-col items-center justify-center mt-2 lg:mt-0">
+                {/* CAMBIO: mt-0 para eliminar espacio extra en móvil y pegar el video al texto */}
+                <div className="lg:col-span-5 relative flex flex-col items-center justify-center mt-0 lg:mt-0">
 
                     {/* VIDEO CONTAINER */}
-                    <div className="relative w-[320px] h-[320px] lg:w-[450px] lg:h-[450px] flex items-center justify-center pointer-events-none">
+                    <div className="relative w-[320px] h-[320px] lg:w-[450px] lg:h-[450px] flex items-center justify-center pointer-events-none scale-90 md:scale-100">
                         <motion.div
                             animate={{
                                 borderRadius: ["60% 40% 30% 70%/60% 30% 70% 40%", "30% 60% 70% 40%/50% 60% 30% 60%", "60% 40% 30% 70%/60% 30% 70% 40%"],
@@ -124,7 +124,7 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.8 }}
-                        className="flex lg:hidden flex-col items-center gap-5 mt-8 w-full"
+                        className="flex lg:hidden flex-col items-center gap-5 mt-4 w-full"
                     >
                         <motion.button
                             whileHover={{ scale: 1.02 }}
