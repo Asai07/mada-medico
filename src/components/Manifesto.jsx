@@ -179,12 +179,12 @@ const Manifesto = () => {
                                 whileTap={{ scale: 0.95 }}
                                 className="bg-[#e7f1ad] text-[#374e86] px-6 py-4 md:px-8 rounded-full font-bold text-lg leading-tight flex items-center justify-center gap-3 shadow-lg shadow-[#e7f1ad]/10 hover:bg-[#dce895] transition-colors w-full md:w-auto text-center font-['Wix_Madefor_Display']"
                             >
-                                Ver si mi consulta necesita estructura
+                                Evaluar mi consulta
                                 <ArrowRight size={20} strokeWidth={2.5} className="flex-shrink-0" />
                             </motion.button>
 
                             <p className="text-[#e7f1ad]/60 text-xs uppercase tracking-widest font-bold text-center mt-3">
-                                ⏱️ Test de 3 minutos sin costo
+                                Ver si mi consulta necesita estructura
                             </p>
                         </div>
                     </div>
