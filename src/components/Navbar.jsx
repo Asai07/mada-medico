@@ -36,7 +36,6 @@ const Navbar = () => {
 
     return (
         <>
-            {/* 1. FUENTE APLICADA: Wix Madefor Display */}
             <motion.nav
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -72,19 +71,19 @@ const Navbar = () => {
                                 className="text-sm font-medium text-[#374e86]/80 hover:text-[#374e86] transition-colors relative group"
                             >
                                 {link.name}
-                                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#e7f1ad] opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
+                                {/* CORRECCIÓN: Volvemos a la línea que se expande (w-0 -> w-full) */}
+                                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e7f1ad] group-hover:w-full transition-all duration-300"></span>
                             </a>
                         ))}
                     </div>
 
-                    {/* Botón CTA - Escritorio */}
+                    {/* Botón CTA */}
                     <div className="flex-1 flex justify-end">
                         <div className="hidden md:flex items-center gap-4">
                             <button
                                 onClick={(e) => scrollToSection(e, 'contacto')}
                                 className="group flex items-center gap-3 cursor-pointer"
                             >
-                                {/* 2. TEXTO CAMBIADO */}
                                 <span className="text-sm font-bold text-[#374e86] group-hover:opacity-70 transition-opacity">
                                     Evaluar mi consulta
                                 </span>
@@ -94,7 +93,7 @@ const Navbar = () => {
                             </button>
                         </div>
 
-                        {/* Botón Hamburguesa Móvil */}
+                        {/* Hamburguesa Móvil */}
                         <button
                             className="md:hidden p-2 text-[#374e86] hover:bg-[#374e86]/5 rounded-full transition-colors"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -106,14 +105,13 @@ const Navbar = () => {
                 </div>
             </motion.nav>
 
-            {/* Menú Móvil Overlay */}
+            {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {mobileMenuOpen && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        // También aplicamos la fuente aquí
                         className="fixed inset-0 bg-[#fdfdfd]/95 backdrop-blur-md z-40 flex flex-col justify-center items-center gap-8 md:hidden font-['Wix_Madefor_Display']"
                     >
                         {navLinks.map((link) => (
@@ -130,7 +128,6 @@ const Navbar = () => {
                             onClick={(e) => scrollToSection(e, 'contacto')}
                             className="mt-8 bg-[#e7f1ad] text-[#374e86] px-8 py-3 rounded-full text-lg font-bold flex items-center gap-2 shadow-lg shadow-[#e7f1ad]/20"
                         >
-                            {/* 2. TEXTO CAMBIADO EN MÓVIL TAMBIÉN */}
                             Evaluar mi consulta <ArrowUpRight size={20} />
                         </button>
                     </motion.div>
