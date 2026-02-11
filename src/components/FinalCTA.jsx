@@ -12,7 +12,8 @@ const FinalCTA = () => {
     const yBg = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
     return (
-        <section ref={containerRef} className="py-24 md:py-32 px-6 md:px-12 bg-[#fdfdfd] relative z-20 overflow-hidden flex items-center justify-center">
+        // Fuente Base Display
+        <section ref={containerRef} className="py-24 md:py-32 px-6 md:px-12 bg-[#fdfdfd] relative z-20 overflow-hidden flex items-center justify-center font-['Wix_Madefor_Display']">
 
             {/* 1. FONDO AMBIENTAL */}
             <motion.div style={{ y: yBg }} className="absolute inset-0 z-0 pointer-events-none opacity-40">
@@ -22,21 +23,17 @@ const FinalCTA = () => {
 
             <div className="relative z-10 w-full max-w-5xl mx-auto">
 
-                {/* 2. CONTENEDOR CON BORDE SÓLIDO (REEMPLAZO DEL SVG) */}
-                {/* Usamos un div absoluto con borde CSS real. Esto nunca falla en móvil ni PC. */}
+                {/* 2. CONTENEDOR CON BORDE SÓLIDO */}
                 <div className="relative px-6 py-12 md:px-16 md:py-20 text-center">
 
                     <motion.div
-                        // Borde sólido de 2px, color azul, esquinas redondeadas
                         className="absolute inset-0 border-2 border-[#374e86] rounded-[2rem] pointer-events-none"
-                        // Animación de entrada elegante (Fade In + Scale Up sutil)
                         initial={{ opacity: 0, scale: 0.98 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true, margin: "-10%" }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     />
 
-                    {/* Decoración (Sparkles) */}
                     <motion.div
                         initial={{ scale: 0, opacity: 0 }}
                         whileInView={{ scale: 1, opacity: 1 }}
@@ -76,12 +73,12 @@ const FinalCTA = () => {
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             transition={{ delay: 0.4 }}
-                            className="text-[#374e86]/60 text-sm md:text-base font-medium max-w-lg mb-10"
+                            className="text-[#374e86]/60 text-sm md:text-base font-medium max-w-lg mb-10 font-['Wix_Madefor_Text']"
                         >
                             Antes de avanzar, evaluemos si nuestro enfoque de marketing médico de alto valor es el adecuado para el momento actual de tu consulta.
                         </motion.p>
 
-                        {/* 4. CTA AJUSTADO (Menos alto) */}
+                        {/* 4. CTA */}
                         <motion.div
                             initial={{ scale: 0.9, opacity: 0 }}
                             whileInView={{ scale: 1, opacity: 1 }}
@@ -91,8 +88,7 @@ const FinalCTA = () => {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                // Mantenemos el ajuste de altura (py-4) y tamaño de texto (text-xl)
-                                className="group relative bg-[#374e86] text-white px-10 py-4 rounded-full text-lg md:text-xl font-bold overflow-hidden shadow-2xl shadow-[#374e86]/30"
+                                className="group relative bg-[#374e86] text-white px-10 py-4 rounded-full text-lg md:text-xl font-bold overflow-hidden shadow-2xl shadow-[#374e86]/30 font-['Wix_Madefor_Display']"
                             >
                                 <div className="absolute inset-0 bg-[#e7f1ad] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
                                 <span className="relative z-10 flex items-center justify-center gap-3 group-hover:text-[#374e86] transition-colors duration-300">
@@ -107,7 +103,7 @@ const FinalCTA = () => {
                                         ⏱️ Test de 3 minutos
                                     </p>
                                 </div>
-                                <p className="text-[#374e86]/40 text-[10px] max-w-xs mx-auto leading-relaxed">
+                                <p className="text-[#374e86]/40 text-[10px] max-w-xs mx-auto leading-relaxed font-['Wix_Madefor_Text']">
                                     Compromiso de honestidad: Si no somos el enfoque adecuado, te lo diremos.
                                 </p>
                             </div>

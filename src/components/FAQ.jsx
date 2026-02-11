@@ -47,7 +47,8 @@ const FAQItem = ({ item, isOpen, onClick }) => {
                 onClick={onClick}
                 className="w-full py-6 flex items-start justify-between gap-4 text-left group transition-all"
             >
-                <span className={`text-lg md:text-xl font-medium transition-colors duration-300 ${isOpen ? 'text-[#374e86]' : 'text-[#374e86]/70 group-hover:text-[#374e86]'}`}>
+                {/* Fuente Texto para la Pregunta */}
+                <span className={`text-lg md:text-xl font-medium transition-colors duration-300 font-['Wix_Madefor_Text'] ${isOpen ? 'text-[#374e86]' : 'text-[#374e86]/70 group-hover:text-[#374e86]'}`}>
                     {item.question}
                 </span>
                 <span className={`flex-shrink-0 mt-1 transition-colors duration-300 ${isOpen ? 'text-[#e7f1ad]' : 'text-[#374e86]/40 group-hover:text-[#374e86]'}`}>
@@ -64,7 +65,8 @@ const FAQItem = ({ item, isOpen, onClick }) => {
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="overflow-hidden"
                     >
-                        <p className="pb-8 text-[#374e86]/70 font-light leading-relaxed max-w-2xl text-base md:text-lg">
+                        {/* Fuente Texto para la Respuesta */}
+                        <p className="pb-8 text-[#374e86]/70 font-light leading-relaxed max-w-2xl text-base md:text-lg font-['Wix_Madefor_Text']">
                             {item.answer}
                         </p>
                     </motion.div>
@@ -102,7 +104,8 @@ const FAQ = () => {
     };
 
     return (
-        <section id="faq" className="py-24 md:py-32 px-6 md:px-12 bg-[#fdfdfd] relative z-20 font-sans">
+        // Fuente Base Display
+        <section id="faq" className="py-24 md:py-32 px-6 md:px-12 bg-[#fdfdfd] relative z-20 font-['Wix_Madefor_Display']">
 
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 {/* Background noise placeholder */}
@@ -110,10 +113,8 @@ const FAQ = () => {
 
             <div className="max-w-7xl mx-auto">
 
-                {/* --- GRID PRINCIPAL (Info + Preguntas) --- */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 mb-24">
 
-                    {/* COLUMNA IZQUIERDA (Sticky Container) */}
                     <div className="lg:col-span-5 relative">
                         <div className="lg:sticky lg:top-32 transition-all duration-300">
 
@@ -127,7 +128,7 @@ const FAQ = () => {
                                 Algunas dudas comunes antes de dar el siguiente paso.
                             </h2>
 
-                            {/* Visual Sketch Box Animado */}
+                            {/* Visual Sketch Box (Sin cambios de lógica) */}
                             <div className="relative w-full aspect-video lg:aspect-square max-w-sm">
                                 <motion.svg
                                     key={showIdea ? "idea" : "question"}
@@ -136,13 +137,7 @@ const FAQ = () => {
                                     initial="hidden"
                                     animate="visible"
                                 >
-                                    {/* Marco Exterior */}
-                                    <motion.rect
-                                        x="5" y="5" width="390" height="390" rx="10" ry="10"
-                                        fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
-                                        variants={draw} custom={0}
-                                    />
-                                    {/* Líneas Texto */}
+                                    <motion.rect x="5" y="5" width="390" height="390" rx="10" ry="10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" variants={draw} custom={0} />
                                     <motion.path d="M40,60 Q100,55 160,60 T280,60" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.6" variants={draw} custom={1} />
                                     <motion.path d="M290,60 L350,60" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.4" variants={draw} custom={1.5} />
                                     <motion.path d="M40,120 Q200,115 360,120" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" variants={draw} custom={2} />
@@ -152,7 +147,6 @@ const FAQ = () => {
                                     <motion.path d="M250,340 Q300,320 350,340" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.5" variants={draw} custom={4} />
                                 </motion.svg>
 
-                                {/* Icono Cambiante */}
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <AnimatePresence mode='wait'>
                                         {showIdea ? (
@@ -182,13 +176,9 @@ const FAQ = () => {
                                 </div>
                                 <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-[#e7f1ad] rounded-full opacity-20 blur-xl"></div>
                             </div>
-
-                            {/* SE ELIMINÓ EL CTA PEQUEÑO DE AQUÍ */}
-
                         </div>
                     </div>
 
-                    {/* COLUMNA DERECHA (Lista Acordeón) */}
                     <div className="lg:col-span-7">
                         <div className="border-t border-[#374e86]/10">
                             {faqData.map((item, index) => (
@@ -203,31 +193,25 @@ const FAQ = () => {
                     </div>
                 </div>
 
-
-                {/* --- NUEVO BANNER CTA INFERIOR (Destacado) --- */}
                 <div className="bg-[#374e86] rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-2xl shadow-[#374e86]/20">
-
-                    {/* Decoración Fondo */}
                     <div className="absolute top-0 right-0 w-64 h-64 bg-[#e7f1ad]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
                     <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#95b2ed]/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4"></div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center relative z-10">
-                        {/* Texto */}
                         <div>
                             <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
                                 Si llegaste hasta aquí...
                             </h3>
-                            <p className="text-[#fdfdfd]/80 text-lg font-light leading-relaxed max-w-lg">
+                            <p className="text-[#fdfdfd]/80 text-lg font-light leading-relaxed max-w-lg font-['Wix_Madefor_Text']">
                                 Probablemente estás buscando algo más claro que solo "intentar cosas". Evalúa tu negocio y ve si este enfoque es adecuado.
                             </p>
                         </div>
 
-                        {/* Botón */}
                         <div className="flex flex-col items-start md:items-end gap-4">
                             <motion.button
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
-                                className="group relative bg-[#fdfdfd] text-[#374e86] px-8 py-4 rounded-full text-base md:text-lg font-bold overflow-hidden shadow-lg"
+                                className="group relative bg-[#fdfdfd] text-[#374e86] px-8 py-4 rounded-full text-base md:text-lg font-bold overflow-hidden shadow-lg font-['Wix_Madefor_Display']"
                             >
                                 <div className="absolute inset-0 bg-[#e7f1ad] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
                                 <span className="relative z-10 flex items-center gap-2 group-hover:text-[#374e86] transition-colors duration-300">

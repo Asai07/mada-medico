@@ -4,9 +4,7 @@ import { ArrowUpRight, Instagram, Facebook } from 'lucide-react';
 
 const Footer = () => {
 
-    // Función para el botón gigante (Aquí iría el link a tu formulario/Typeform)
     const handleCTAClick = () => {
-        // Ejemplo: window.open("https://tu-link-al-formulario.com", "_blank");
         console.log("Navegar al formulario");
     };
 
@@ -15,7 +13,8 @@ const Footer = () => {
     };
 
     return (
-        <footer className="bg-[#374e86] text-[#fdfdfd] pt-20 pb-8 px-6 md:px-12 relative overflow-hidden rounded-t-[3rem] md:rounded-t-[5rem] -mt-10 z-30 font-sans">
+        // CAMBIO: Fuente base 'Wix Madefor Display' en lugar de font-sans
+        <footer className="bg-[#374e86] text-[#fdfdfd] pt-20 pb-8 px-6 md:px-12 relative overflow-hidden rounded-t-[3rem] md:rounded-t-[5rem] -mt-10 z-30 font-['Wix_Madefor_Display']">
 
             {/* TEXTURA DE FONDO */}
             <div className="absolute inset-0 pointer-events-none opacity-20"
@@ -39,7 +38,7 @@ const Footer = () => {
                         <div className="h-1.5 w-8 bg-[#e7f1ad] mt-1 group-hover:w-full transition-all duration-500 ease-out rounded-full"></div>
                     </div>
 
-                    {/* Redes Sociales (Solo IG y FB) */}
+                    {/* Redes Sociales */}
                     <div className="flex gap-6 md:gap-8">
                         {[
                             { name: 'Instagram', icon: Instagram, url: '#' },
@@ -59,7 +58,6 @@ const Footer = () => {
                 </div>
 
                 {/* --- 2. MIDDLE SECTION (Massive CTA Button) --- */}
-                {/* Mismo diseño que les gustó, pero ahora es un botón de acción */}
                 <div className="mb-20">
                     <motion.div
                         onClick={handleCTAClick}
@@ -68,7 +66,7 @@ const Footer = () => {
                         initial="initial"
                         className="group relative w-full border-t border-b border-[#fdfdfd]/20 py-16 md:py-24 cursor-pointer overflow-hidden"
                     >
-                        {/* Fondo Hover animado (Sube desde abajo color Lima) */}
+                        {/* Fondo Hover animado */}
                         <motion.div
                             variants={{
                                 initial: { y: "100%" },
@@ -82,15 +80,17 @@ const Footer = () => {
 
                             {/* Texto CTA */}
                             <div className="flex flex-col items-center md:items-start transition-colors duration-300 group-hover:text-[#374e86]">
+                                {/* Mantenemos font-mono para etiquetas técnicas */}
                                 <span className="font-mono text-xs font-bold uppercase tracking-widest mb-2 opacity-60 group-hover:opacity-100">
                                     ¿Listo para escalar?
                                 </span>
+                                {/* Mantenemos Serif para el título elegante */}
                                 <h2 className="font-serif italic text-4xl md:text-6xl lg:text-7xl text-center md:text-left leading-tight">
                                     Evaluar mi negocio
                                 </h2>
                             </div>
 
-                            {/* Icono de Acción (Flecha) */}
+                            {/* Icono de Acción */}
                             <div className="w-20 h-20 rounded-full border border-[#fdfdfd]/30 group-hover:border-[#374e86]/30 flex items-center justify-center transition-colors">
                                 <ArrowUpRight
                                     size={32}
@@ -104,18 +104,16 @@ const Footer = () => {
                 </div>
 
                 {/* --- 3. BOTTOM SECTION (Legal & Credits) --- */}
+                {/* Mantenemos font-mono para esta sección legal/técnica */}
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-[#fdfdfd]/40 text-[10px] md:text-xs font-mono uppercase tracking-widest">
 
-                    {/* Izquierda */}
                     <p>© {new Date().getFullYear()} MADA Medical Marketing.</p>
 
-                    {/* Centro: Links Legales */}
                     <div className="flex gap-6">
                         <a href="#" className="hover:text-[#fdfdfd] transition-colors">Aviso de Privacidad</a>
                         <a href="#" className="hover:text-[#fdfdfd] transition-colors">Términos</a>
                     </div>
 
-                    {/* Derecha: Créditos */}
                     <div className="flex items-center gap-2">
                         <p className="hidden md:block">Monterrey, N.L.</p>
                         <span className="hidden md:block text-[#e7f1ad]">•</span>
